@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messenger Chatbox</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      #chatbox {
+        width: 300px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      #chat-messages {
+        height: 300px;
+        overflow-y: scroll;
+        padding: 10px;
+        background-color: #fff;
+      }
+
+      #input-box {
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ccc;
+      }
+
+      #message-input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+
+      #send-button {
+        padding: 8px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #send-button:hover {
+        background-color: #45a049;
+      }
+
+      .user-message {
+        text-align: right;
+        color: #4caf50;
+      }
+
+      .system-message {
+        text-align: left;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chatbox">
+      <div id="chat-messages"></div>
+      <div id="input-box">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type your message..."
+        />
+        <button id="send-button" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      function sendMessage() {
+        var messageInput = document.getElementById("message-input");
+        var message = messageInput.value.trim();
+
+        if (message !== "") {
+          var chatMessages = document.getElementById("chat-messages");
+
+          // User's message
+          var userMessage = document.createElement("div");
+          userMessage.className = "message user-message";
+          userMessage.textContent = message;
+          chatMessages.appendChild(userMessage);
+
+          // Check if the input message is "হ্যালো"
+          if (message === "হ্যালো") {
+            // System's response
+            var systemResponse = document.createElement("div");
+            systemResponse.className = "message system-message";
+            systemResponse.textContent = "হাই, আমি কিভাবে সাহায্য করতে পারি?";
+            chatMessages.appendChild(systemResponse);
+          } else if (message === "বিদায়") {
+            // System's response
+            var systemResponse = document.createElement("div");
+            systemResponse.className = "message system-message";
+            systemResponse.textContent = "বিদায়!শীঘ্রই আবার ফিরে আসুন।";
+            chatMessages.appendChild(systemResponse);
+          } else if (message === "") {
+            // System's response
+            var systemResponse = document.createElement("div");
+            systemResponse.className = "message system-message";
+            systemResponse.textContent = "দুঃখিত, তোমাকে বুঝতে পারছি না";
+            chatMessages.appendChild(systemResponse);
+          } else if (message === "আপনার নাম কি") {
+            // System's response
+            var systemResponse = document.createElement("div");
+            systemResponse.className = "message system-message";
+            systemResponse.textContent =
+              "হাই, আমার নাম আভা, আপনার ভার্চুয়াল সহকারী";
+            chatMessages.appendChild(systemResponse);
+          } else if (
+            message === "ডেটা মাইনিং এবং মেশিন লার্নিংয়ের মধ্যে পার্থক্য"
+          ) {
+            // System's response
+            var systemResponse = document.createElement("div");
+            systemResponse.className = "message system-message";
+            systemResponse.textContent =
+              "মেশিন লার্নিং অ্যালগরিদমগুলির অধ্যয়ন, নকশা এবং বিকাশের সাথে সম্পর্কিত যা কম্পিউটারগুলিকে স্পষ্টভাবে প্রোগ্রাম না করে শেখার সক্ষমতা দেয়।যদিও, ডেটা মাইনিংকে এমন প্রক্রিয়া হিসাবে সংজ্ঞায়িত করা যেতে পারে যেখানে অবিচ্ছিন্ন ডেটা জ্ঞান বা অজানা আকর্ষণীয় নিদর্শনগুলি বের করার চেষ্টা করে।এই প্রক্রিয়া মেশিনের সময়, লার্নিং অ্যালগরিদমগুলি ব্যবহৃত হয়।";
+            chatMessages.appendChild(systemResponse);
+          } else if (message === "ডিপ লার্নিং কি") {
+            // System's response
+            var systemResponse = document.createElement("div");
+            systemResponse.className = "message system-message";
+            systemResponse.textContent =
+              "ডিপ লার্নিং (ডিপ স্ট্রাকচার্ড লার্নিং হিসাবেও পরিচিত) প্রতিনিধিত্ব শেখার সাথে কৃত্রিম নিউরাল নেটওয়ার্কগুলির উপর ভিত্তি করে মেশিন লার্নিং পদ্ধতির বিস্তৃত পরিবারের অংশ।";
+            chatMessages.appendChild(systemResponse);
+          }
+
+          messageInput.value = "";
+
+          // Scroll to the bottom of the chatbox
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      }
+    </script>
+  </body>
+</html>
